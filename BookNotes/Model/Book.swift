@@ -8,6 +8,14 @@
 
 import Foundation
 
+struct Book: Identifiable {
+    var id = UUID()
+    var imageName = ""
+    var bookName = ""
+    var authorName = ""
+    var summary = ""
+    var characters = [Character]()
+}
 //struct Book {
 //    var bookName = ""
 //    var authorName = ""

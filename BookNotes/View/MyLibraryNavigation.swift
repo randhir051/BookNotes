@@ -8,52 +8,77 @@
 
 import SwiftUI
 
-struct Book: Identifiable {
-    var id = UUID()
-    var imageName = ""
-    var bookName = ""
-    var authorName = ""
-    var summary = ""
-    
-}
 
 
 struct MyLibraryNavigation: View {
     
+    @State var showAlert: Bool = false
+    @State var showGuide: Bool = false
+    @State var showInfo: Bool = false
+    @GestureState private var dragState = DragState.inactive
+    
     init() {
     }
     
+    var books: [Book] = dummyBooks
     
-    var books: [Book] = [
-        Book(bookName: "The Catcher in the Rye", authorName: "JD Salinger", summary: "The novel details two days in the life of 16-year-old Holden Caulfield after he has been expelled from prep school. Confused and disillusioned, Holden searches for truth and rails against the “phoniness” of the adult world."),
-        Book(bookName: "The Book Thief", authorName: "Markus Zusak", summary: "Liesel lives with her foster parents Hans and Rosa Hubermann in Nazi Germany. She finds solace from the horrors around her by stealing books from the mayor's house to learn new words."),
-        Book(bookName: "The Wheel of Times", authorName: "Robert Jordan", summary: "Wheel of Time is a story that takes place both in our past and our future. In his fantasy world, the Dark One, the embodiment of pure evil, is breaking free from his prison."),
-        Book(bookName: "Harry Potter", authorName: "JK Rowling", summary: "Story of a boy who is a hocrux."),
-        Book(imageName: "photo", bookName: "I'll give you the Sun", authorName: "Jady Nelson", summary: "Story of a twin."),
-        Book(bookName: "The Perks of Being a Wallflower", authorName: "Stephen Chbosky", summary: "Story of an introvert.")
-    ]
+    // MARK: - DRAG STATES
+    
+    enum DragState {
+        case inactive
+        case pressing
+        case dragging(translation: CGSize)
+        
+        var translation: CGSize {
+            switch self {
+            case .inactive, .pressing:
+                return .zero
+            case .dragging(let translation):
+                return translation
+            }
+        }
+        
+        var isDragging: Bool {
+            switch self {
+            case .dragging:
+                return true
+            case .pressing, .inactive:
+                return false
+            }
+        }
+        
+        var isPressing: Bool {
+            switch self {
+            case .pressing, .dragging:
+                return true
+            case .inactive:
+                return false
+            }
+        }
+    }
     
     var body: some View {
         
         NavigationView {
             
-//            ZStack{
-            
+            VStack {
+                // MARK: - HEADER
+                HeaderView(showGuideView: $showGuide, showInfoView: $showInfo)
+                    .opacity(dragState.isDragging ? 0.0 : 1.0)
+                    .animation(.default)
+                
+                Spacer()
+                
+                // MARK: - LIST VIEW
                 List(books) { book in
-                    
                     NavigationLink(destination: BookNavigationView(book_item: book)) {
-//                        VStack(alignment: .leading, spacing: -15){
                         VStack(alignment: .leading, spacing: -15){
-                            
-                            
                             Image(book.bookName)
-                            .resizable()
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                            .shadow(radius: 5)
-                            .frame(width: 100.0, height: 150.0)
-                            .padding(.leading, 20)
-                            
-                            
+                                .resizable()
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                                .shadow(radius: 5)
+                                .frame(width: 100.0, height: 150.0)
+                                .padding(.leading, 20)
                             VStack(alignment: .leading){
                                 Text(book.bookName)
                                 Text(book.authorName)
@@ -64,19 +89,12 @@ struct MyLibraryNavigation: View {
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 40, alignment: Alignment.topLeading)
                             .padding(.all, 20)
                             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1).blendMode(BlendMode.destinationOver))
-                            
-                            
                         }
                     }.padding(.all, 10)
-                    
                 }.navigationBarTitle("My Library", displayMode: .inline)
-                
-
-                Color.red.opacity(0.5).edgesIgnoringSafeArea(.all).blendMode(.destinationOver)
-//            }
+                // MARK: - LIST END
+            }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         }
-        //.background(Image("Texture"))
-        //.navigationBarTitle(Text("MyLibrary"))
     }
 }
 

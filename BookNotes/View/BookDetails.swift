@@ -47,6 +47,6 @@ struct BookDetails: View {
 
 struct BookDetails_Previews: PreviewProvider {
     static var previews: some View {
-        BookDetails(book: Book(imageName: "photo", bookName: "The Book Thief", authorName: "Markus Zusak", summary: "A story set during WW2 in Germany of a girl learning about frienship"))
+        BookDetails(book: Book(imageName: "photo", bookName: "The Book Thief", authorName: "Markus Zusak", summary: "A story set during WW2 in Germany of a girl learning about frienship", characters: dummyCharacters))
     }
 }

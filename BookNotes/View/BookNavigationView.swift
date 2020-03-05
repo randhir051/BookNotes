@@ -9,17 +9,16 @@
 import SwiftUI
 
 struct BookNavigationView: View {
-    var book_item: Book?
+    var book_item: Book
     var body: some View {
         TabView{
-            BookDetails(book: book_item!).tabItem({
-                Image("Notes").frame(width: 50, height: 50.0)
+            CharactersView(characters: book_item.characters).tabItem({
+                Image(systemName: "person.2.fill")
+                Text("Characters")
                 })
-            Text("Characters of the book").tabItem({
-                Image("character")
-                })
-            Text("Favourite Quotes").tabItem({
-                Image("Quote-2")
+            BookDetails(book: book_item).tabItem({
+                Image(systemName: "info.circle.fill")
+                Text("Book Info")
             })
         }.background(Color.black)
     }
