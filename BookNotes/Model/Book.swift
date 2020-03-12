@@ -8,7 +8,18 @@
 
 import Foundation
 
-struct Book: Identifiable {
+struct Book: Identifiable, Hashable {
+    
+    
+    static func == (lhs: Book, rhs: Book) -> Bool {
+           return lhs.bookName == rhs.bookName
+       }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(bookName)
+    }
+    
+    
     var id = UUID()
     var imageName = ""
     var bookName = ""

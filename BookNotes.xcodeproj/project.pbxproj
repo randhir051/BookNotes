@@ -15,9 +15,10 @@
 		22669C31240F48CB00A44DCD /* DummyCharaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22669C30240F48CB00A44DCD /* DummyCharaters.swift */; };
 		22669C33240F549C00A44DCD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22669C32240F549C00A44DCD /* HeaderView.swift */; };
 		22669C35240F579300A44DCD /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22669C34240F579300A44DCD /* AddBookView.swift */; };
+		22669C3824120AF100A44DCD /* DragState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22669C3724120AF100A44DCD /* DragState.swift */; };
 		22B9255123E4957A0088B21B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9255023E4957A0088B21B /* AppDelegate.swift */; };
 		22B9255323E4957A0088B21B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9255223E4957A0088B21B /* SceneDelegate.swift */; };
-		22B9255523E4957A0088B21B /* MyLibraryNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9255423E4957A0088B21B /* MyLibraryNavigation.swift */; };
+		22B9255523E4957A0088B21B /* BooksNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9255423E4957A0088B21B /* BooksNavigation.swift */; };
 		22B9255723E4957D0088B21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B9255623E4957D0088B21B /* Assets.xcassets */; };
 		22B9255A23E4957D0088B21B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B9255923E4957D0088B21B /* Preview Assets.xcassets */; };
 		22B9255D23E4957D0088B21B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B9255B23E4957D0088B21B /* LaunchScreen.storyboard */; };
@@ -26,7 +27,6 @@
 		22B9258323E4A51A0088B21B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9258223E4A51A0088B21B /* LoginViewController.swift */; };
 		22B9258623E52A9B0088B21B /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9258523E52A9B0088B21B /* Book.swift */; };
 		22B9258823E533CD0088B21B /* BookDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9258723E533CD0088B21B /* BookDetails.swift */; };
-		22B9258C23E563BD0088B21B /* BookNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9258B23E563BD0088B21B /* BookNavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +55,11 @@
 		22669C30240F48CB00A44DCD /* DummyCharaters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCharaters.swift; sourceTree = "<group>"; };
 		22669C32240F549C00A44DCD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		22669C34240F579300A44DCD /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		22669C3724120AF100A44DCD /* DragState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragState.swift; sourceTree = "<group>"; };
 		22B9254D23E4957A0088B21B /* BookNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B9255023E4957A0088B21B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22B9255223E4957A0088B21B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		22B9255423E4957A0088B21B /* MyLibraryNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryNavigation.swift; sourceTree = "<group>"; };
+		22B9255423E4957A0088B21B /* BooksNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksNavigation.swift; sourceTree = "<group>"; };
 		22B9255623E4957D0088B21B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22B9255923E4957D0088B21B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22B9255C23E4957D0088B21B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		22B9258223E4A51A0088B21B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22B9258523E52A9B0088B21B /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		22B9258723E533CD0088B21B /* BookDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetails.swift; sourceTree = "<group>"; };
-		22B9258B23E563BD0088B21B /* BookNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22669C3624120AE000A44DCD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				22669C3724120AF100A44DCD /* DragState.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		22B9254423E4957A0088B21B = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +131,7 @@
 		22B9254F23E4957A0088B21B /* BookNotes */ = {
 			isa = PBXGroup;
 			children = (
+				22669C3624120AE000A44DCD /* Utilities */,
 				22B9258A23E55F0C0088B21B /* View */,
 				22B9258923E55F070088B21B /* Model */,
 				22B9258423E52A8C0088B21B /* Data */,
@@ -185,9 +194,8 @@
 		22B9258A23E55F0C0088B21B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				22B9255423E4957A0088B21B /* MyLibraryNavigation.swift */,
+				22B9255423E4957A0088B21B /* BooksNavigation.swift */,
 				22B9258723E533CD0088B21B /* BookDetails.swift */,
-				22B9258B23E563BD0088B21B /* BookNavigationView.swift */,
 				22669C26240EB1B100A44DCD /* CharactersView.swift */,
 				22669C2E240F478C00A44DCD /* CharacterDetails.swift */,
 				22669C32240F549C00A44DCD /* HeaderView.swift */,
@@ -334,11 +342,11 @@
 				22669C35240F579300A44DCD /* AddBookView.swift in Sources */,
 				22B9255323E4957A0088B21B /* SceneDelegate.swift in Sources */,
 				22669C29240F43D100A44DCD /* DummyBooks.swift in Sources */,
-				22B9255523E4957A0088B21B /* MyLibraryNavigation.swift in Sources */,
+				22B9255523E4957A0088B21B /* BooksNavigation.swift in Sources */,
 				22669C2B240F45EC00A44DCD /* Character.swift in Sources */,
+				22669C3824120AF100A44DCD /* DragState.swift in Sources */,
 				22669C2F240F478C00A44DCD /* CharacterDetails.swift in Sources */,
 				22669C31240F48CB00A44DCD /* DummyCharaters.swift in Sources */,
-				22B9258C23E563BD0088B21B /* BookNavigationView.swift in Sources */,
 				22669C2D240F463A00A44DCD /* Relationship.swift in Sources */,
 				22B9258823E533CD0088B21B /* BookDetails.swift in Sources */,
 				22669C33240F549C00A44DCD /* HeaderView.swift in Sources */,

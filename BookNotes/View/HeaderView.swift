@@ -10,45 +10,43 @@ import SwiftUI
 
 struct HeaderView: View {
     // MARK: - PROPERTIES
-    @Binding var showGuideView: Bool
-    @Binding var showInfoView: Bool
+    @Binding var showAddItemScreen: Bool
+    @Binding var searchText: String
+    @Binding var showCancelButton: Bool
+    
     let haptics = UINotificationFeedbackGenerator()
     
+    
     var body: some View {
-        ZStack {
-            
-            
-            Image("add-book")
-                .resizable()
-                //                .frame(width: .infinity, height: .infinity, alignment: .center)
-                .scaledToFit()
-                .frame(width: 375, height: 80)
+        HStack {
+                            
+            TextField(" Search", text: $searchText).font(.system(size: 22, weight: .regular)).padding(.all, 6).background(RoundedRectangle(cornerRadius: 16).colorInvert().shadow(radius: 2), alignment: .center)
             
             Button(action: {
                 // ACTION
-                //playSound(sound: "sound-click", type: "mp3")
                 self.haptics.notificationOccurred(.success)
-                self.showInfoView.toggle()
+                self.showAddItemScreen.toggle()
             }) {
-                Text("Add Book")
-                    .font(.system(size: 24, weight: .regular))
+                Image(systemName: "plus.circle.fill")
+                    .font(.system(size: 32, weight: .regular)).shadow(radius: 2)
             }
-            .accentColor(Color.primary)
-            .sheet(isPresented: $showInfoView) {
+            .accentColor(Color.white)
+            .sheet(isPresented: $showAddItemScreen) {
                 AddBookView()
             }
-            
         }
-        .padding()
+//        .padding()
     }
 }
 
 struct HeaderView_Previews: PreviewProvider {
-    @State static var showGuide: Bool = false
-    @State static var showInfo: Bool = false
+    @State static var showAddItemScreen: Bool = false
+    @State static var showCancelButton: Bool = false
+    @State static var searchText: String = ""
+    
     
     static var previews: some View {
-        HeaderView(showGuideView: $showGuide, showInfoView: $showInfo)
+        HeaderView(showAddItemScreen: $showAddItemScreen, searchText: $searchText, showCancelButton: $showCancelButton)
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

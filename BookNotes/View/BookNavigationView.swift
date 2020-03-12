@@ -12,7 +12,7 @@ struct BookNavigationView: View {
     var book_item: Book
     var body: some View {
         TabView{
-            CharactersView(characters: book_item.characters).tabItem({
+            CharactersView(book_item: book_item).tabItem({
                 Image(systemName: "person.2.fill")
                 Text("Characters")
                 })

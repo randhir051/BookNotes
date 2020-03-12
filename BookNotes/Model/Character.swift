@@ -9,13 +9,23 @@
 import Foundation
 
 
-struct Character: Identifiable {
+struct Character: Identifiable, Hashable {
+        
+    static func == (lhs: Character, rhs: Character) -> Bool {
+           return lhs.characterName == rhs.characterName
+       }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(characterName)
+    }
+    
     var id = UUID()
-    var imageName = ""
-    var characterName = ""
-    var description = ""
-    var dialogues = [String]()
-    var relationships = [Relationship]()
+//    var id : Int
+    var imageName: String = ""
+    var characterName : String = ""
+    var description : String = ""
+    var dialogues : [String] = []
+    var relationships : [Relationship] = []
     
 }
 

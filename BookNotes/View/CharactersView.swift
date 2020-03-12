@@ -9,61 +9,69 @@
 import SwiftUI
 
 struct CharactersView: View {
-    var characters: [Character]
+    //    var characters: [Character]
+    var book_item: Book
+    
+    
+    @State var showAlert: Bool = false
+    @State var showAddItemScreen: Bool = false
+    @State var searchText: String = ""
+    @State var showCancelButton: Bool = false
+    @GestureState private var dragState = DragState.inactive
+    
+    let trailingPad: CGFloat = 32
+    let leadingPad: CGFloat = 32
     
     var body: some View {
         
-//        NavigationView {
+        ScrollView {
             
-            List(characters) { character in
+            ZStack(alignment: .bottom) {
+                Image(book_item.imageName).resizable().scaledToFill().edgesIgnoringSafeArea(.top).frame( height: 200, alignment: .center).clipped()
+                //            Spacer()
+                ZStack(alignment: .bottom) {
+                    RoundedRectangle(cornerRadius: 32).frame(height: 96, alignment: .center).colorInvert().padding(.leading, leadingPad*2).padding(.trailing, trailingPad*2).offset(x: 0, y: 32)
+                    Text(book_item.bookName).font(.system(size: 32, weight: .regular))
+                }
+            }
+            
+            
+            // MARK: - HEADER
+            HeaderView(showAddItemScreen: $showAddItemScreen, searchText: $searchText, showCancelButton: $showCancelButton)
+                .opacity(dragState.isDragging ? 0.0 : 1.0)
+                .animation(.default).padding(.all, leadingPad)//.padding(.trailing, trailingPad)
+            
+            
+            ForEach(book_item.characters.filter{$0.characterName.hasPrefix(searchText) || searchText == ""}, id:\.self) {
+                character in
                 
                 NavigationLink(destination: CharacterDetails(character: character)) {
-                    //                        VStack(alignment: .leading, spacing: -15){
-                    VStack(alignment: .trailing, spacing: -25){
+                    
+                    HStack(){
+                    VStack(alignment: .leading) {
                         
-                        
-                        Image(character.imageName)
-                            .resizable()
-                            .clipShape(Circle())
-                            .shadow(radius: 5)
-                            .frame(width: 100.0, height: 100)
-                            .padding(.leading, 20)
-                        
-                        
-                        VStack(alignment: .leading){
-                            Text(character.characterName)
-                            Text(character.description)
-                                .font(.subheadline)
-                                .foregroundColor(Color.black.opacity(0.5))
-                            Spacer()
-                        }
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 40, alignment: Alignment.topLeading)
-                        .padding(.all, 20)
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1).blendMode(BlendMode.destinationOver))
-                        
+                        Text(character.characterName).foregroundColor(.black).font(.system(size: 18, weight: .bold))
+                        Text(character.description).foregroundColor(.gray).font(.system(size: 14, weight: .regular))
+                            .font(.subheadline)
+                        Divider()
                         
                     }
-                }.padding(.all, 10)
+                    }.padding(.leading, self.leadingPad/2)
+                }//.padding(.all, 8)
                 
-        }.navigationBarItems(trailing: Button(action: {
-            self.addRow()
-        }) {
-            Image(systemName: "plus")
-        })
-            
-//            .navigationBarTitle("My Library", displayMode: .inline)
-//            Color.red.opacity(0.5).edgesIgnoringSafeArea(.all).blendMode(.destinationOver)
-//        }
+            }
+        }.edgesIgnoringSafeArea(.top)
+        
     }
     
     private func addRow() {
-           //self.locations.append("New Location")
+        //self.locations.append("New Location")
         print("add row")
-       }
+    }
 }
 
 struct CharactersView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersView(characters: dummyCharacters)
+        CharactersView(book_item: dummyBooks[3])
     }
 }
